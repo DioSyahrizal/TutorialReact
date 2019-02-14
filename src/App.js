@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -46,7 +46,11 @@ class App extends Component {
       color: 'white',
       font: 'inherit',
       border: '1px solid blue',
-      padding: '8px'
+      padding: '8px',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let classes = [];
@@ -72,14 +76,20 @@ class App extends Component {
         </div>
       )
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      }
     }
     return (
-      <div className="App">
-        <h1>My Name is Dio!</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button style={style} onClick={this.tooglePersonHandler}>Change!</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>My Name is Dio!</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button style={style} onClick={this.tooglePersonHandler}>Change!</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
