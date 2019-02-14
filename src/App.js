@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
-import './App.css';
-import Radium, {StyleRoot} from 'radium';
+import classes from './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -53,12 +52,12 @@ class App extends Component {
       }
     }
 
-    let classes = [];
+    let assignedClass = [];
     if(this.state.persons.length <= 2){
-      classes.push('red');
+      assignedClass.push('red');
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold');
+      assignedClass.push('bold');
     }
 
     let persons = null;
@@ -82,16 +81,14 @@ class App extends Component {
       }
     }
     return (
-      <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>My Name is Dio!</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
+          <p className={assignedClass.join(' ')}>This is really working!</p>
           <button style={style} onClick={this.tooglePersonHandler}>Change!</button>
           {persons}
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;

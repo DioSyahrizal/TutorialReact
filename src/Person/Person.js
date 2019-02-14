@@ -1,6 +1,5 @@
 import React from 'react';
-import Radium from 'radium';
-import './Person.css';
+import classes from './Person.css';
 
 const Person = props => {
 
@@ -11,7 +10,7 @@ const Person = props => {
   };
 
   return (
-    <div className="Person" style={style}>
+    <div className={classes.Person} style={style}>
       <p onClick={props.click}>
         I am {props.name}! My chakra is {props.chakra} %
       </p>
@@ -20,4 +19,4 @@ const Person = props => {
     </div>
   );
 };
-export default Radium(Person);
+export default Person;
