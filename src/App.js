@@ -40,26 +40,17 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
 
     let assignedClass = [];
     if(this.state.persons.length <= 2){
-      assignedClass.push('red');
+      assignedClass.push(classes.red);
     }
     if(this.state.persons.length <= 1){
-      assignedClass.push('bold');
+      assignedClass.push(classes.bold);
     }
 
+
+    let btnClass = '';
     let persons = null;
     if(this.state.showPersons){
       persons = (
@@ -74,17 +65,15 @@ class App extends Component {
           })}
         </div>
       )
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'lightred',
-        color: 'black'
-      }
+      btnClass = classes.Red;
     }
     return (
         <div className={classes.App}>
           <h1>My Name is Dio!</h1>
           <p className={assignedClass.join(' ')}>This is really working!</p>
-          <button style={style} onClick={this.tooglePersonHandler}>Change!</button>
+          <button
+            className={btnClass}
+            onClick={this.tooglePersonHandler}>Change!</button>
           {persons}
         </div>
     );
